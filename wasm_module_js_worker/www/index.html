@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+</head>
+
+<body>
+    <div id=wrapper>
+        <h1>WASM module, worker created in JS</h1>
+        <div>
+            <p>In this example, we compile our example WASM code to a JS module. The module can be
+                loaded in all modern browers in the main thread, but not all browsers support
+                loading modules in a web worker.
+            </p>
+            <p>Notably, the worker code will fail with a syntax error in Firefox.</p>
+            <p><b>Open the JS console to see the script output</b></p>
+
+        </div>
+    </div>
+
+    <!-- Note the `type="module"` in the script tag -->
+    <script type="module" src="./index.js"></script>
+
+</body>
+
+</html>
