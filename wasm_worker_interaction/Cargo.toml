@@ -20,6 +20,7 @@ features = [
     'console',
     'Document',
     'HtmlInputElement',
+    'MessageEvent',
     'Window',
     'Worker',
 ]

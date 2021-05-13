@@ -1,6 +1,6 @@
 importScripts('./pkg/wasm_worker_interaction.js');
 
-console.log('Hello from worker')
+console.log('Initializing worker')
 
 const {NumberEval} = wasm_bindgen;
 
@@ -10,12 +10,8 @@ async function init_wasm_in_worker() {
     var num_eval = NumberEval.new(0);
 
     self.onmessage = async event => {
-        console.log("Last number: ", num_eval.get_last_number());
-        if (num_eval.is_even(event.data)) {
-            console.log("Current number is even");
-        } else {
-            console.log("Current number is odd");
-        }
+        var worker_result = num_eval.is_even(event.data);
+        self.postMessage(worker_result);
     };
 };
 
