@@ -2,18 +2,20 @@
 
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id=wrapper>
         <h1>WASM without modules, worker created in JS</h1>
         <div>
-            <p>In this example, we compile our example WASM code  without creating an ES module.
-                Consequently, we have to load the WASM file in another way. The advantage is that
-                all modern browsers support this way of loading WASM even in web workers.
-            </p>
-            <p><b>Open the JS console to see the script output</b></p>
-
+            <div>
+                In this example, we compile our WASM code without creating ES modules. The worker is
+                spawned in `index.js` using JS directly.
+            </div>
+            <div>
+                <b>Open the JS console to see the script output</b>
+            </div>
         </div>
     </div>
 

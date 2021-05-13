@@ -1,6 +1,6 @@
 import init, {add_two_numbers} from './pkg/wasm_main_js_worker.js';
 
-// We compiled with `--target web`, which creates a JS module. Not all modern browsers have support
+// We compiled with `--target web`, which creates an ES module. Not all modern browsers have support
 // for loading modules in web workers. This example will work in Chrome but not in Firefox.
 console.log('Hello from worker')
 

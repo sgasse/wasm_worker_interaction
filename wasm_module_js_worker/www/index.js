@@ -9,7 +9,7 @@ async function run_wasm() {
     // Demonstrate that we can call our function imported from wasm
     console.log('2 + 4 = ', add_two_numbers(2, 4));
 
-    // Create a worker in JS
+    // Create a worker in JS - note the `{type: 'module'}`
     var myWorker = new Worker('./worker.js', {type: 'module'});
 }
 
