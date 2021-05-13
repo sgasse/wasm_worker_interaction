@@ -2,7 +2,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
-use web_sys::{console, HtmlInputElement, MessageEvent, Worker};
+use web_sys::{console, HtmlElement, HtmlInputElement, MessageEvent, Worker};
 
 #[wasm_bindgen]
 pub struct NumberEval {
@@ -43,6 +43,20 @@ pub fn startup() {
 fn get_on_msg_callback() -> Closure<dyn FnMut(MessageEvent)> {
     let callback = Closure::wrap(Box::new(move |event: MessageEvent | {
         console::log_2(&"Received response: ".into(), &event.data().into());
+
+        let document = web_sys::window().unwrap().document().unwrap();
+
+        let result = match event.data().as_bool().unwrap() {
+            true => "even",
+            false => "odd",
+        };
+
+        document
+            .get_element_by_id("resultField")
+            .expect("#resultField should exist")
+            .dyn_ref::<HtmlElement>()
+            .expect("#resultField should be a HtmlInputElement")
+            .set_inner_text(result);
     }) as Box<dyn FnMut(_)>);
 
     callback
@@ -68,17 +82,21 @@ fn setup_input_onchange_callback(worker: Rc<RefCell<web_sys::Worker>>) {
         let input_field = input_field.dyn_ref::<HtmlInputElement>()
             .expect("#inputNumber should be a HtmlInputElement");
 
-        let number = match input_field.value().parse::<i32>() {
-            Ok(num) => num,
-            Err(_) => 0,
-        };
-
-        {
-            let worker_handle = &*worker.borrow();
-            let _ = worker_handle.post_message(&number.into());
-            persistent_callback_handle = get_on_msg_callback();
-            worker_handle.set_onmessage(Some(persistent_callback_handle.as_ref().unchecked_ref()));
-
+        match input_field.value().parse::<i32>() {
+            Ok(number) => {
+                let worker_handle = &*worker.borrow();
+                let _ = worker_handle.post_message(&number.into());
+                persistent_callback_handle = get_on_msg_callback();
+                worker_handle.set_onmessage(Some(persistent_callback_handle.as_ref().unchecked_ref()));
+            },
+            Err(_) => {
+                document
+                    .get_element_by_id("resultField")
+                    .expect("#resultField should exist")
+                    .dyn_ref::<HtmlElement>()
+                    .expect("#resultField should be a HtmlInputElement")
+                    .set_inner_text("");
+            }
         }
 
     }) as Box<dyn FnMut()>);
