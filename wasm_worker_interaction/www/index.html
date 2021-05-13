@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+</head>
+
+<body>
+    <div id=wrapper>
+        <h1>Interaction between WASM worker and main thread</h1>
+        <div>
+            <input type="text" id="inputNumber">
+        </div>
+    </div>
+
+    <!-- Here, we have to load the generated JS file directly in the document -->
+    <script src='./pkg/wasm_worker_interaction.js'></script>
+    <!-- Note that there is NO `type="module"` in the script tag -->
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
