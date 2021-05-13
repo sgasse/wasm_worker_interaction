@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+</head>
+
+<body>
+    <div id=wrapper>
+        <h1>WASM without modules, worker created in WASM</h1>
+        <div>
+            <p>In this example, we compile our example WASM code  without creating an ES module.
+                Additionally, we will create the worker with a call in our Rust code, using
+                 `web_sys`.
+            </p>
+            <p><b>Open the JS console to see the script output</b></p>
+
+        </div>
+    </div>
+
+    <!-- Here, we have to load the generated JS file directly in the document -->
+    <script src='./pkg/wasm_no_modules_wasm_worker.js'></script>
+    <!-- Note that there is NO `type="module"` in the script tag -->
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
