@@ -2,11 +2,46 @@
 
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <style>
+        body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif; 
+            color: white;
+            background-color: black;
+        }
+
+        #wrapper {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #inputNumber {
+            text-align: center;
+        }
+
+        #resultField {
+            text-align: center;
+            height: 1em;
+            padding-top: 0.2em;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Interaction Example</h1>
     <div id="wrapper">
+        <h1>Interaction Example</h1>
+
         <input type="text" id="inputNumber">
 
         <div id="resultField"></div>
