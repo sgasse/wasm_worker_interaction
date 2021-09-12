@@ -26,14 +26,14 @@ navigate to the `www` directory within the example and run e.g.
 
 
 ## Which target to choose
-- When compiling Rust to WASM without a bundler like `webpack`, I initially chose the options
+- When compiling Rust to WASM without a bundler like `webpack`, I initially chose the option
   `--target web`, which is suggested and promoted. This creates ES modules for the compiled WASM
   code. While ES modules _in the main thread_ are supported by all modern browsers, [only Chrome
   supports importing ES modules in the scope of a web worker][Module import in dedicated worker]. Developing with Firefox and being 
-  rookie in JS, it took me a while to understand that I was not doing anything wrong but that it
+  a rookie in JS, it took me a while to understand that I was not doing anything wrong but that it
   just was not supported.
-- Luckily, Rust can still be compiled without creating modules but choosing `--target no-modules`.
-  This requires loading the WASM code in a slightly different way and is also exemplified in the
+- Luckily, Rust can still be compiled without creating modules by choosing `--target no-modules`.
+  This requires loading the WASM code in a slightly different way and is also exemplified in
   three of the four examples.
 
 
