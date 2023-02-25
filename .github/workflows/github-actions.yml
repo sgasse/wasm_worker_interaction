@@ -1,0 +1,58 @@
+name: Build and deploy to GH pages
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+
+  lint:
+    name: clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: nightly
+          components: clippy
+          targets: wasm32-unknown-unknown
+      - run: cargo +nightly clippy --no-deps -- -D warnings
+
+  format:
+    name: rustfmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: nightly
+          components: rustfmt
+          targets: wasm32-unknown-unknown
+      - run: cargo +nightly fmt --check
+
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Build Wasm code for CI
+        run: ./create_gh_pages_content.sh
+
+      - name: Deploy to GH pages
+        if: success() && github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: out

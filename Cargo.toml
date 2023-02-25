@@ -1,0 +1,8 @@
+[workspace]
+
+members = [
+    "wasm_module_js_worker",
+    "wasm_no_modules_js_worker",
+    "wasm_no_modules_wasm_worker",
+    "wasm_worker_interaction",
+]

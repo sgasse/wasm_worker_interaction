@@ -19,6 +19,8 @@ for directory in "${DIRECTORIES[@]}"
 do
     mkdir -p "${OUT_DIR}/${directory}"
     cp -r "${directory}/www" "${OUT_DIR}/${directory}/"
+    # The action deploying to GH-pages ignores everything in .gitignore
+    rm "${OUT_DIR}/${directory}/www/pkg/.gitignore"
 done
 
 for static_file in "index.html" "style.css"
