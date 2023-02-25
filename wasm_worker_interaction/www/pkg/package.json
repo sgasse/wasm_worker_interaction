@@ -1,0 +1,14 @@
+{
+  "name": "wasm_worker_interaction",
+  "collaborators": [
+    "Simon B. Gasse"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "wasm_worker_interaction_bg.wasm",
+    "wasm_worker_interaction.js",
+    "wasm_worker_interaction.d.ts"
+  ],
+  "browser": "wasm_worker_interaction.js",
+  "types": "wasm_worker_interaction.d.ts"
+}

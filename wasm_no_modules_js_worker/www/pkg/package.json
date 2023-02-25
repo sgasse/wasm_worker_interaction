@@ -1,0 +1,14 @@
+{
+  "name": "wasm_no_modules_js_worker",
+  "collaborators": [
+    "Simon B. Gasse"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "wasm_no_modules_js_worker_bg.wasm",
+    "wasm_no_modules_js_worker.js",
+    "wasm_no_modules_js_worker.d.ts"
+  ],
+  "browser": "wasm_no_modules_js_worker.js",
+  "types": "wasm_no_modules_js_worker.d.ts"
+}
