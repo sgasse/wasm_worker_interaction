@@ -1,29 +1,27 @@
 <html>
-
-<head>
+  <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-    <div id=wrapper>
-        <h1>WASM module, worker created in JS</h1>
+  <body>
+    <div id="wrapper">
+      <h1>Wasm module, worker created in JS</h1>
+      <div>
         <div>
-            <div>
-                In this example, we compile our WASM code and create ES modules. The worker is
-                spawned in `index.js` using JS directly. Loading ES modules in a worker is not
-                supported in all modern browsers. Particularily in Firefox, the worker will report
-                a syntax error. It works in Chrome though.
-            </div>
-            <div>
-                <b>Open the JS console to see the script output</b>
-            </div>
+          In this example, we compile our Wasm code and create ES modules. The
+          worker is spawned in `index.js` using JS directly. Loading ES modules
+          in a worker is not supported in all modern browsers. Particularily in
+          Firefox, the worker will report a syntax error. It works in Chrome
+          though.
         </div>
+        <div>
+          <b>Open the JS console to see the script output</b>
+        </div>
+      </div>
     </div>
 
     <!-- Note the `type="module"` in the script tag -->
     <script type="module" src="./index.js"></script>
-
-</body>
-
+  </body>
 </html>

@@ -1,29 +1,26 @@
 <html>
-
-<head>
+  <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-    <div id=wrapper>
-        <h1>WASM without modules, worker created in JS</h1>
+  <body>
+    <div id="wrapper">
+      <h1>Wasm without modules, worker created in JS</h1>
+      <div>
         <div>
-            <div>
-                In this example, we compile our WASM code without creating ES modules. The worker is
-                spawned in `index.js` using JS directly.
-            </div>
-            <div>
-                <b>Open the JS console to see the script output</b>
-            </div>
+          In this example, we compile our Wasm code without creating ES modules.
+          The worker is spawned in `index.js` using JS directly.
         </div>
+        <div>
+          <b>Open the JS console to see the script output</b>
+        </div>
+      </div>
     </div>
 
     <!-- Here, we have to load the generated JS file directly in the document -->
-    <script src='./pkg/wasm_no_modules_js_worker.js'></script>
+    <script src="./pkg/wasm_no_modules_js_worker.js"></script>
     <!-- Note that there is NO `type="module"` in the script tag -->
     <script src="./index.js"></script>
-
-</body>
-
+  </body>
 </html>

@@ -8,12 +8,12 @@ pub fn add_two_numbers(a: i32, b: i32) -> i32 {
 
 #[wasm_bindgen]
 pub fn startup() {
-    // Until deploying a WASM application in production, adding the panic hook
+    // Until deploying a Wasm application in production, adding the panic hook
     // makes debugging a lot easier.
     set_panic_hook();
 
     Worker::new("./worker.js").expect("Failed to create worker");
-    console::log_1(&"Created a new worker from within WASM".into());
+    console::log_1(&"Created a new worker from within Wasm".into());
 }
 
 pub fn set_panic_hook() {

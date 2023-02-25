@@ -46,7 +46,7 @@ pub fn startup() {
     // mutability pattern. In this example, it would not be needed but we include the wrapping
     // anyway as example.
     let worker_handle = Rc::new(RefCell::new(Worker::new("./worker.js").unwrap()));
-    console::log_1(&"Created a new worker from within WASM".into());
+    console::log_1(&"Created a new worker from within Wasm".into());
 
     // Pass the worker to the function which sets up the `onchange` callback.
     setup_input_onchange_callback(worker_handle);
