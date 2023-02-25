@@ -11,8 +11,8 @@ DIRECTORIES=(
 
 for directory in "${DIRECTORIES[@]}"
 do
-    echo "Building $directory..."
-    cd $directory
+    echo "Building ${directory}..."
+    cd ${directory}
     ./build.sh
     cd -
 done
